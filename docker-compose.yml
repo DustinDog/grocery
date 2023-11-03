@@ -1,0 +1,59 @@
+version: "3.9"
+services:
+
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    networks:
+      - main
+    depends_on:
+      - psql_db
+      - cache
+    volumes:
+      - .:/code
+    command: python manage.py runserver 0.0.0.0:8000
+    container_name: api
+
+
+  psql_db:
+    image: postgres
+    restart: no
+    networks:
+      - main
+    volumes:
+      - ./data/psql_db:/data
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      
+
+    # environment:
+    #   - POSTGRES_PASSWORD : password
+    #   - POSTGRES_DB = postgres
+    #   - POSTGRES_USER = postgres
+    container_name: psql_db
+
+  cache:
+    image: redis:6.2-alpine
+    restart: always
+    ports:
+      - '6379:6379'
+    environment:
+      - REDIS_HOST = cache
+      - REDIS_PORT = 6379
+      - REDIS_PASSWORD = eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+    command: redis-server --save 20 1 --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+    volumes: 
+      - ./cache:/data
+
+
+volumes:
+  web:
+
+networks:
+  main:
+    name: main

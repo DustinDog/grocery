@@ -1,0 +1,15 @@
+
+venv*/
+db.sqlite3
+data/
+cache/
+.env
+
+# Django #
+*.log
+*.pot
+*.pyc
+__pycache__
+
+
+

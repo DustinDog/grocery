@@ -29,12 +29,7 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: postgres
       POSTGRES_USER: postgres
-      
 
-    # environment:
-    #   - POSTGRES_PASSWORD : password
-    #   - POSTGRES_DB = postgres
-    #   - POSTGRES_USER = postgres
     container_name: psql_db
 
   cache:

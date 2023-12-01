@@ -17,7 +17,7 @@ services:
 
 
   psql_db:
-    image: postgres
+    image: postgres:13.13
     restart: no
     networks:
       - main

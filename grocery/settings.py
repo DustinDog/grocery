@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     "debug_toolbar",
     "drf_spectacular",
     "core",
+    "dbbackup",
 ]
 
 MIDDLEWARE = [
@@ -101,6 +102,7 @@ DATABASES = {
         "USER": "postgres",
         "PASSWORD": "password",
         "HOST": "psql_db",
+        # "HOST": "localhost",
         "PORT": 5432,
     }
 }
@@ -135,3 +137,7 @@ STATIC_URL = "static/"
 
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+DBBACKUP_STORAGE = "django.core.files.storage.FileSystemStorage"
+DBBACKUP_STORAGE_OPTIONS = {"location": f"{BASE_DIR}/backup/"}
+DBBACKUP_CLEANUP_KEEP = 2

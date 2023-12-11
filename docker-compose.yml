@@ -17,7 +17,7 @@ services:
 
 
   psql_db:
-    image: postgres
+    image: postgres:13.13
     restart: no
     networks:
       - main
@@ -29,7 +29,6 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: postgres
       POSTGRES_USER: postgres
-
     container_name: psql_db
 
   cache:

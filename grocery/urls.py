@@ -2,11 +2,10 @@ from django.contrib import admin
 from django.urls import path, include
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 from rest_framework import routers
-from core.views import UserViewSet
 
 
-router = routers.DefaultRouter()
-router.register(r"user_viewset", UserViewSet)
+
+
 
 urlpatterns = [
     path("api/", include("core.urls")),
